@@ -97,7 +97,7 @@ public class Player : Human
 
     public void PlusMentality(int value)
     {
-        if (mentality + value <= 100)
+        if (mentality + value <= 125)
         {
             mentality += value;
         }
