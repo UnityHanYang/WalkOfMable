@@ -645,7 +645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ae7334c4924e284d8146304cc0076e4, type: 2}
   m_sharedMaterial: {fileID: -6604225042212250988, guid: 3ae7334c4924e284d8146304cc0076e4, type: 2}
@@ -2599,7 +2599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1307391702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2615,9 +2615,9 @@ RectTransform:
   - {fileID: 1400165866}
   m_Father: {fileID: 1507874338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 527.5, y: -186.4}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1307391703
@@ -2832,6 +2832,7 @@ MonoBehaviour:
   - {fileID: 909345196}
   - {fileID: 894809397}
   humans: []
+  controllClick: {fileID: 1392148508}
   battleTurn: 0
 --- !u!4 &1386600560
 Transform:
@@ -2879,6 +2880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 223402416}
   messageText: {fileID: 1712746525}
+  isClick: 0
 --- !u!4 &1392148509
 Transform:
   m_ObjectHideFlags: 0
@@ -3732,7 +3734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC804\uD22C \uBA54\uC138\uC9C0 \uBC0F\n\uCE90\uB9AD\uD130 \uB300\uC0AC"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ae7334c4924e284d8146304cc0076e4, type: 2}
   m_sharedMaterial: {fileID: -6604225042212250988, guid: 3ae7334c4924e284d8146304cc0076e4, type: 2}
