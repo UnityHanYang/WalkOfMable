@@ -71,6 +71,10 @@ public class Player : Human
 
     public void Turn()
     {
+        if (courage == 100)
+        {
+            BattleManager.instance.attackBtn.interactable = true;
+        }
         if(BattleManager.instance.colleagues.Length == 0)
         {
             PlusCourage(20);

@@ -37,6 +37,7 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         battleTurn = BattleTurn.Player;
+        attackBtn.interactable = false;
     }
 
     public void OpenAction()
@@ -50,6 +51,7 @@ public class BattleManager : MonoBehaviour
     {
         animator.SetBool("isCloseAction", true);
         animator.SetBool("isCloseMenu", false);
+        animator.SetBool("isOpenAction", false);
     }
     public void CloseMenu()
     {
@@ -66,6 +68,9 @@ public class BattleManager : MonoBehaviour
         animator.SetBool("isCloseMenu", false);
         animator.SetBool("isCloseAction", false);
         animator.SetBool("isHideAction", false);
+        controllClick.messageText.text = "";
+        controllClick.nameText.text = "";
+        controllClick.isClick = false;
     }
 
     void Update()
@@ -101,6 +106,12 @@ public class BattleManager : MonoBehaviour
         {
             monster.Turn(1, player.isDefend, player.isbreathe);
         }
-        //ChoiceMenu();
+        StartCoroutine(RestartGame());
+    }
+
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(2);
+        ChoiceMenu();
     }
 }
