@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/1. Scene/MainMenuScene.unity
+    guid: 1baf0ff9abd4f5c469eb568db229ee6c
+  - enabled: 1
+    path: Assets/3. Material/Fantasy RPG UI Pack/Scenes/DemoScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
