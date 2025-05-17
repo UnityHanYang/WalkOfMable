@@ -4,42 +4,48 @@ using UnityEngine.UI;
 public class MonsterVisualManager : MonoBehaviour
 {
     public Image monsterImageUI;
+    public Image bossFullImageUI;
 
-    public Sprite[] area0Monsters; // 0구역 1~4층 몬스터
-    public Sprite[] area1Monsters; // 1구역 1~4층 몬스터
-    public Sprite[] area2Monsters; // 2구역 1~5층 몬스터
+    public Sprite[] area0Monsters;
+    public Sprite[] area1Monsters;
+    public Sprite[] area2Monsters;
+
+    public Sprite finalBossFullImage;
 
     public void UpdateMonsterSprite(int area, int floor)
     {
+        // 초기화: 모두 숨기기
+        monsterImageUI.color = new Color(1, 1, 1, 0);
+        bossFullImageUI.color = new Color(1, 1, 1, 0);
+
         Sprite targetSprite = null;
 
-        switch (area)
+        if (area == 0 && floor < area0Monsters.Length)
         {
-            case 0:
-                if (floor >= 0 && floor <= 3 && floor < area0Monsters.Length)
-                    targetSprite = area0Monsters[floor];
-                break;
-
-            case 1:
-                if (floor >= 0 && floor <= 3 && floor < area1Monsters.Length)
-                    targetSprite = area1Monsters[floor];
-                break;
-
-            case 2:
-                if (floor >= 0 && floor <= 4 && floor < area1Monsters.Length)
-                    targetSprite = area1Monsters[floor];
-                break;
-        }
-
-        if (targetSprite != null)
-        {
+            targetSprite = area0Monsters[floor];
             monsterImageUI.sprite = targetSprite;
-            monsterImageUI.color = new Color(1, 1, 1, 1); // 보이게
+            monsterImageUI.color = new Color(1, 1, 1, 1);
         }
-        else
+        else if (area == 1 && floor < area1Monsters.Length)
         {
-            // 몬스터가 없는 층이면 숨기기
-            monsterImageUI.color = new Color(1, 1, 1, 0);
+            targetSprite = area1Monsters[floor];
+            monsterImageUI.sprite = targetSprite;
+            monsterImageUI.color = new Color(1, 1, 1, 1);
+        }
+        else if (area == 2)
+        {
+            if (floor <= 3 && floor < area2Monsters.Length)
+            {
+                targetSprite = area2Monsters[floor];
+                monsterImageUI.sprite = targetSprite;
+                monsterImageUI.color = new Color(1, 1, 1, 1);
+            }
+            else if (floor == 4)
+            {
+                // 보스 등장!
+                bossFullImageUI.sprite = finalBossFullImage;
+                bossFullImageUI.color = new Color(1, 1, 1, 1);
+            }
         }
     }
 }
