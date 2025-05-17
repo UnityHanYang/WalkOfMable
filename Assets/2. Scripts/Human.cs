@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class Human : MonoBehaviour
 {
-    public int mentality = 100;
+    #region Á¤½Å·Â
+    public static int mentality { get; protected set; }
+    #endregion
     public Image currentImg;
     public Image[] faceImg;
     private bool isTop = true;

@@ -8,8 +8,9 @@ public class Creature100 : Monster
     {
         attackDamage = 30;
     }
-    public override void Turn(int area, int damage)
+
+    public override void Turn(int area, bool isDefend, bool isbreathe, int damage)
     {
-        base.Turn(area, attackDamage);
+        base.Turn(area, isDefend, isbreathe, attackDamage);
     }
 }

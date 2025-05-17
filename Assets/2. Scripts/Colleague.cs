@@ -8,7 +8,7 @@ public class Colleague : Human
     public override void Action()
     {
         base.Action();
-        BattleManager.instance.battleTurn = BattleTurn.Colleague;
+        BattleManager.instance.battleTurn = BattleTurn.Monster;
     }
     public override void ChangeCondition(int mentality, Image originImg, Image[] changeImg)
     {
@@ -17,6 +17,6 @@ public class Colleague : Human
 
     private void Update()
     {
-        ChangeCondition(mentality, currentImg, faceImg);
+       // ChangeCondition(mentality, currentImg, faceImg);
     }
 }
