@@ -11,6 +11,8 @@ public class Doctor : Monster
 
     public void Attack()
     {
-        BattleManager.instance.player.DamagedMentality(Player.mentality - (Player.mentality/2));
+        Player player = BattleManager.instance.player;
+        int damage = player.mentality / 2;
+        player.DamagedMentality(damage);
     }
 }
