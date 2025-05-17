@@ -7,7 +7,7 @@ public class MonsterVisualManager : MonoBehaviour
 
     public Sprite[] area0Monsters; // 0구역 1~4층 몬스터
     public Sprite[] area1Monsters; // 1구역 1~4층 몬스터
-    public Sprite finalBossSprite; // 2구역 보스
+    public Sprite[] area2Monsters; // 2구역 1~5층 몬스터
 
     public void UpdateMonsterSprite(int area, int floor)
     {
@@ -26,8 +26,8 @@ public class MonsterVisualManager : MonoBehaviour
                 break;
 
             case 2:
-                if (floor == 0) // 3구역은 1층만 있고, 그게 보스!
-                    targetSprite = finalBossSprite;
+                if (floor >= 0 && floor <= 4 && floor < area1Monsters.Length)
+                    targetSprite = area1Monsters[floor];
                 break;
         }
 

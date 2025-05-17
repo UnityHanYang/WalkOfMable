@@ -468,7 +468,12 @@ MonoBehaviour:
   - {fileID: -595978322, guid: b07ccb3044e3b954aa2ab77ed9faf24c, type: 3}
   - {fileID: 421192781, guid: b07ccb3044e3b954aa2ab77ed9faf24c, type: 3}
   - {fileID: -1260712674, guid: b07ccb3044e3b954aa2ab77ed9faf24c, type: 3}
-  finalBossSprite: {fileID: 0}
+  area2Monsters:
+  - {fileID: 21300000, guid: a5078c3e3502de240a0e2293cb7a3212, type: 3}
+  - {fileID: 21300000, guid: b421717eab8dbe74285ce4be2c9b0aa2, type: 3}
+  - {fileID: 21300000, guid: ce7ddadc7da9c794abf1f940900d1096, type: 3}
+  - {fileID: 21300000, guid: 4c4fb0c9201ab8047993062251b153ae, type: 3}
+  - {fileID: 0}
 --- !u!1 &190290361
 GameObject:
   m_ObjectHideFlags: 0
