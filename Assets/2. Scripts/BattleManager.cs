@@ -31,21 +31,23 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         battleTurn = BattleTurn.Player;
+        monster.Turn(5);
     }
 
     void Update()
     {
-        switch (battleTurn)
-        {
-            case BattleTurn.Player:
-                player.Turn();
-                break;
-            case BattleTurn.Colleague:
-                colleagues[currentColleaguesIndex].Action();
-                break;
-            case BattleTurn.Monster:
-                monster.Turn();
-                break;
-        }
+        //switch (battleTurn)
+        //{
+        //    case BattleTurn.Player:
+        //        player.Turn();
+        //        break;
+        //    case BattleTurn.Colleague:
+        //        colleagues[currentColleaguesIndex].Action();
+        //        currentColleaguesIndex++;
+        //        break;
+        //    case BattleTurn.Monster:
+        //        monster.Turn();
+        //        break;
+        //}
     }
 }

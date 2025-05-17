@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Creature50 : Monster
 {
-    protected override void Attack(int area)
+    private void Awake()
     {
-        base.Attack(area);
+        attackDamage = 20;
     }
 
-    protected override void ChoiceType(int area)
+    public override void Turn(int area, int damage)
     {
-        base.ChoiceType(area);
-    }
-    public override void Turn()
-    {
-        base.Turn();
+        base.Turn(area, attackDamage);
     }
 }

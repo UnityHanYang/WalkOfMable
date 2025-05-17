@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Creature100 : MonoBehaviour
+public class Creature100 : Monster
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        attackDamage = 30;
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void Turn(int area, int damage)
     {
-        
+        base.Turn(area, attackDamage);
     }
 }

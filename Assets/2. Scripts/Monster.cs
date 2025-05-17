@@ -20,19 +20,19 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
-        Attack(10);
+
     }
-    protected virtual void Attack(int area)
+    private void Attack(int area, int damage)
     {
         ChoiceType(area);
-        BattleManager.instance.player.DamagedHp(attackDamage * area);
+        BattleManager.instance.player.DamagedHp(damage * area);
     }
 
-    protected virtual void ChoiceType(int area)
+    private void ChoiceType(int area)
     {
         int num = Random.Range(0, area);
 
-        attackType = (area-1 == num) ? AttackType.physic : AttackType.spirit;
+        attackType = (area - 1 == num) ? AttackType.physic : AttackType.spirit;
     }
 
     protected void Die()
@@ -40,8 +40,9 @@ public class Monster : MonoBehaviour
 
     }
 
-    public virtual void Turn()
+    public virtual void Turn(int area, int damage = 0)
     {
+        Attack(area, damage);
         BattleManager.instance.battleTurn = BattleTurn.Player;
     }
 
