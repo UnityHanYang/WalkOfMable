@@ -72,7 +72,6 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("aa");
             monster.Turn(1, player.isDefend, player.isbreathe);
         }
     }
