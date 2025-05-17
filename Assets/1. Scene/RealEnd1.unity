@@ -235,22 +235,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 628453793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fd3cf41fb79d2546b5fc6282b3143c5, type: 3}
+  m_Script: {fileID: 11500000, guid: ce8c885869a20b14ba80fcbf8b156145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   imageDisplay: {fileID: 936153358}
   textDisplay: {fileID: 1577852005}
   fadePanel: {fileID: 1144475474}
   cutsceneImages:
-  - {fileID: 21300000, guid: 60f1f7f52b4e71b44b2129da8bf0f430, type: 3}
-  - {fileID: 21300000, guid: 58066df2b844ab640aa64cdab042fc4f, type: 3}
-  - {fileID: 21300000, guid: 482f65b5fa057a647a385160f575cdb3, type: 3}
+  - {fileID: 21300000, guid: 6af205e4e9a865147971bbc7701d14c1, type: 3}
+  - {fileID: 21300000, guid: d2c654b09101f5349b5deb449b6887ec, type: 3}
+  - {fileID: 21300000, guid: abfebd4e47932c84f88fa4381a8b2f41, type: 3}
   cutsceneTexts:
-  - "\uAE30\uD68D \uAE40\uAD8C\uD76C"
-  - "\uAC1C\uBC1C \uBC15\uD658\uC758"
-  - "\uAC1C\uBC1C \uC190\uC5F0\uC6B0"
-  - "\uC791\uD654 \uC774\uBBFC\uC601"
-  cutsceneIsText: 00000001010101
+  - "\uB4DC\uB514\uC5B4... \uD574\uCE58\uC6E0\uB098...?"
+  - "\uC5B4\uB518\uAC00\uC5D0\uC11C \uBE5B\uC774 \uC2A4\uBA70\uB098\uC628\uB2E4..."
+  - "\uC774 \uBB38\uB9CC \uC5F4\uBA74... \uBC14\uAE65 \uC138\uC0C1\uC73C\uB85C..."
+  - "\uC774\uC81C \uB05D\uC774\uC57C."
+  cutsceneIsText: 01000100010001
   fadeDuration: 1
   textSpeed: 0.05
   imageFadeDuration: 0.5
