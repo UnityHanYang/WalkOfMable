@@ -29,7 +29,11 @@ public class Player : Human
         hp = 100;
         hunger = 100;
         courage = 0;
-        mentality = 100;
+        mentality = 60;
+    }
+    private void Start()
+    {
+        UpdateFace();
     }
     public override void Action()
     {
@@ -38,24 +42,43 @@ public class Player : Human
 
     public void DamagedHp(int damage)
     {
-        hp -= damage;
+        if (hp - damage >= 0)
+        {
+            hp -= damage;
+        }
     }
     public void DamagedMentality(int damage)
     {
-        mentality -= damage;
+        if (mentality - damage >= 0)
+        {
+            mentality -= damage;
+        }
     }
 
     public void Attack()
     {
         if (courage == 100)
         {
+            BattleManager.instance.attackBtn.interactable = true;
             BattleManager.instance.monster.gameObject.SetActive(false);
             BattleManager.instance.monster.Die();
+        }
+        else
+        {
+            BattleManager.instance.attackBtn.interactable = false;
         }
     }
 
     public void Turn()
     {
+        if (courage == 100)
+        {
+            BattleManager.instance.attackBtn.interactable = true;
+        }
+        if(BattleManager.instance.colleagues.Length == 0)
+        {
+            PlusCourage(20);
+        }
     }
 
     public void Defense()
@@ -63,14 +86,30 @@ public class Player : Human
         isDefend = true;
     }
 
-    public void Run()
+    public void Run(int value)
     {
-        mentality -= 10;
+        if (mentality - value >= 0)
+        {
+            mentality -= value;
+        }
+        UpdateFace();
     }
 
-    public void Pray()
+    public void PlusMentality(int value)
     {
-        mentality += 10;
+        if (mentality + value <= 125)
+        {
+            mentality += value;
+        }
+        UpdateFace();
+
+    }
+    public void PlusCourage(int value)
+    {
+        if (courage + value <= 100)
+        {
+            courage += value;
+        }
     }
 
     public void Breathe()
@@ -78,13 +117,25 @@ public class Player : Human
         isbreathe = true;
     }
 
-    public override void ChangeCondition(int mentality, Image originImg, Image[] changeImg)
+    private void UpdateFace()
     {
-        base.ChangeCondition(mentality, originImg, changeImg);
+        if (BattleManager.instance != null)
+        {
+            ChangeCondition(mentality, BattleManager.instance.characterImg[0], faceImg);
+        }
+        else if(GameManager.instance != null)
+        {
+            ChangeCondition(mentality, GameManager.instance.characterImg[0], faceImg);
+        }
+    }
+
+    public override void ChangeCondition(int mentality, Image img, Sprite[] changeImg)
+    {
+        base.ChangeCondition(mentality, img, changeImg);
     }
 
     private void Update()
     {
-       // ChangeCondition(mentality, currentImg, faceImg);
+        
     }
 }

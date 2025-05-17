@@ -52,6 +52,19 @@ public class Monster : MonoBehaviour
         int num = Random.Range(0, area);
 
         attackType = (area - 1 == num) ? AttackType.physic : AttackType.spirit;
+
+        if(area < 6)
+        {
+            BattleManager.instance.controllClick.FirstEnemyAttack(attackType);
+        }
+        else if(area < 11)
+        {
+            BattleManager.instance.controllClick.SecondEnemyAttack(attackType);
+        }
+        else
+        {
+            BattleManager.instance.controllClick.ThirdEnemyAttack();
+        }
     }
 
     public virtual void Die()
