@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BattleTurn
 {
@@ -16,6 +17,9 @@ public class BattleManager : MonoBehaviour
     public Monster monster;
     public Colleague[] colleagues;
     public Animator animator;
+    public Button attackBtn;
+    public Image[] characterImg;
+    public Human[] humans;
 
     public BattleTurn battleTurn;
     private int currentColleaguesIndex = 0;
@@ -26,24 +30,42 @@ public class BattleManager : MonoBehaviour
         monster = FindAnyObjectByType<Monster>();
         player = FindAnyObjectByType<Player>();
         colleagues = FindObjectsOfType<Colleague>();
+        humans = FindObjectsOfType<Human>();
     }
 
     private void Start()
     {
         battleTurn = BattleTurn.Player;
-        //monster.Turn(5);
-        //ChoiceMenu();
     }
 
-    //private void ChoiceMenu()
-    //{
-    //    int a = 1;
-    //    animator.SetTrigger("CloseMenu");
-    //    if (a == 1)
-    //    {
-    //        animator.SetTrigger("OpenAction");
-    //    }
-    //}
+    public void OpenAction()
+    {
+        animator.SetBool("isOpenAction", false);
+        animator.SetBool("isCloseAction", false);
+        animator.SetBool("isCloseMenu", true);
+        animator.SetBool("isOpenAction", true);
+    }
+    public void OpenMenu()
+    {
+        animator.SetBool("isCloseAction", true);
+        animator.SetBool("isCloseMenu", false);
+    }
+    public void CloseMenu()
+    {
+        animator.SetBool("isCloseMenu", true);
+    }
+    public void CloseAction()
+    {
+        animator.SetBool("isHideAction", true);
+    }
+
+    public void ChoiceMenu()
+    {
+        animator.SetBool("isOpenAction", false);
+        animator.SetBool("isCloseMenu", false);
+        animator.SetBool("isCloseAction", false);
+        animator.SetBool("isHideAction", false);
+    }
 
     void Update()
     {
@@ -53,8 +75,11 @@ public class BattleManager : MonoBehaviour
                 player.Turn();
                 break;
             case BattleTurn.Colleague:
-                colleagues[currentColleaguesIndex].Action();
-                currentColleaguesIndex = (currentColleaguesIndex + 1) >= colleagues.Length ? 0 : currentColleaguesIndex+=1;
+                if(colleagues.Length > 0)
+                {
+                    colleagues[currentColleaguesIndex].Action();
+                    currentColleaguesIndex = (currentColleaguesIndex + 1) >= colleagues.Length ? 0 : currentColleaguesIndex += 1;
+                }
                 break;
             case BattleTurn.Monster:
                 CheckBoss();
@@ -66,7 +91,7 @@ public class BattleManager : MonoBehaviour
 
     private void CheckBoss()
     {
-        if(TryGetComponent<Doctor>(out Doctor doctor))
+        if (TryGetComponent<Doctor>(out Doctor doctor))
         {
             doctor.Attack();
         }
@@ -74,5 +99,6 @@ public class BattleManager : MonoBehaviour
         {
             monster.Turn(1, player.isDefend, player.isbreathe);
         }
+        //ChoiceMenu();
     }
 }
