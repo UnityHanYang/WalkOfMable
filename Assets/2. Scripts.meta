@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 133c812b031d36447b12120ddfb15f86
+=======
+<<<<<<< HEAD
+guid: 6c3430526f9c2584ea6074e76bdf2c0a
+=======
+guid: 133c812b031d36447b12120ddfb15f86
+>>>>>>> Yeonwoo
+>>>>>>> Stashed changes
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
