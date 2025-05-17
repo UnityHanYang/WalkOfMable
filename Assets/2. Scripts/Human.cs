@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Human : MonoBehaviour
 {
-    public int mentality = 100;
     public Image currentImg;
     public Image[] faceImg;
     private bool isTop = true;

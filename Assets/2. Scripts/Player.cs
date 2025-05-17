@@ -17,11 +17,19 @@ public class Player : Human
     public static int hp { get; private set; }
     #endregion
 
+    #region Á¤½Å·Â
+    public static int mentality { get; private set; }
+    #endregion
+
+    public bool isDefend = false;
+    public bool isbreathe = false;
+
     private void Awake()
     {
         hp = 100;
         hunger = 100;
         courage = 0;
+        mentality = 100;
     }
     public override void Action()
     {
@@ -32,28 +40,42 @@ public class Player : Human
     {
         hp -= damage;
     }
+    public void DamagedMentality(int damage)
+    {
+        mentality -= damage;
+    }
 
     public void Attack()
     {
         if (courage == 100)
         {
             BattleManager.instance.monster.gameObject.SetActive(false);
+            BattleManager.instance.monster.Die();
         }
     }
 
     public void Turn()
     {
-        int a = 1;
+    }
 
-        if (a == 1)
-        {
-            Attack();
-        }
-        else
-        {
-            Action();
-        }
-        BattleManager.instance.battleTurn = BattleTurn.Colleague;
+    public void Defense()
+    {
+        isDefend = true;
+    }
+
+    public void Run()
+    {
+        mentality -= 10;
+    }
+
+    public void Pray()
+    {
+        mentality += 10;
+    }
+
+    public void Breathe()
+    {
+        isbreathe = true;
     }
 
     public override void ChangeCondition(int mentality, Image originImg, Image[] changeImg)
@@ -63,6 +85,6 @@ public class Player : Human
 
     private void Update()
     {
-        ChangeCondition(mentality, currentImg, faceImg);
+       // ChangeCondition(mentality, currentImg, faceImg);
     }
 }

@@ -91,6 +91,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
+<<<<<<<< HEAD:Assets/4. Texture/Fantasy RPG UI Pack/PNG/healthbar/RPG_Round/Gold/Frame/decor3.png.meta
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -104,6 +105,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
+========
+>>>>>>>> HwanUi:Assets/Fantasy RPG UI Pack/PNG/healthbar/RPG_Round/Gold/Frame/decor3.png.meta
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
