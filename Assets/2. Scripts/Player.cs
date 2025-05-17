@@ -16,6 +16,11 @@ public class Player : Human
     #region 체력
     public static int hp { get; private set; }
     #endregion
+
+    #region 정신력
+    public static int mentality { get; private set; }
+    #endregion
+
     public bool isDefend = false;
     public bool isbreathe = false;
 
@@ -24,6 +29,7 @@ public class Player : Human
         hp = 100;
         hunger = 100;
         courage = 0;
+        mentality = 100;
     }
     public override void Action()
     {
@@ -60,6 +66,16 @@ public class Player : Human
     public void Run()
     {
         mentality -= 10;
+    }
+
+    public void Pray()
+    {
+        mentality += 10;
+    }
+
+    public void Breathe()
+    {
+        isbreathe = true;
     }
 
     public override void ChangeCondition(int mentality, Image originImg, Image[] changeImg)

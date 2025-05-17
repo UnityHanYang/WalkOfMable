@@ -5,6 +5,8 @@ using UnityEngine;
 public class BattleControllClick : MonoBehaviour
 {
     Player player;
+    public GameObject MenuObj;
+    public GameObject actionObj;
 
     private void Start()
     {
@@ -25,6 +27,8 @@ public class BattleControllClick : MonoBehaviour
     }
     public void ActionClick()
     {
+        MenuObj.SetActive(false);
+        actionObj.SetActive(true);
         player.Action();
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
     }
@@ -32,5 +36,23 @@ public class BattleControllClick : MonoBehaviour
     {
         player.Run();
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
+    }
+
+    public void PrayClick()
+    {
+        player.Pray();
+        BattleManager.instance.battleTurn = BattleTurn.Colleague;
+    }
+
+    public void BreatheClick()
+    {
+        player.Breathe();
+        BattleManager.instance.battleTurn = BattleTurn.Colleague;
+    }
+
+    public void BackClick()
+    {
+        actionObj.SetActive(false);
+        MenuObj.SetActive(true);
     }
 }
