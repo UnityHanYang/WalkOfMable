@@ -8,6 +8,7 @@ public class BattleControllClick : MonoBehaviour
     Player player;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI messageText;
+    private bool isClick = false;
 
     private void Start()
     {
@@ -18,12 +19,14 @@ public class BattleControllClick : MonoBehaviour
     }
     public void AttackClick()
     {
+        isClick = true;
         player.Attack();
         BattleManager.instance.CloseMenu();
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
     }
     public void DefenseClick()
     {
+        isClick = true;
         player.Defense();
         BattleManager.instance.CloseMenu();
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
@@ -35,6 +38,7 @@ public class BattleControllClick : MonoBehaviour
     }
     public void RunClick()
     {
+        isClick = true;
         player.Run(20);
         for (int i = 0; i < BattleManager.instance.colleagues.Length; i++)
         {
@@ -46,6 +50,7 @@ public class BattleControllClick : MonoBehaviour
 
     public void PrayClick()
     {
+        isClick = true;
         player.PlusMentality(10);
         BattleManager.instance.CloseAction();
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
@@ -53,6 +58,7 @@ public class BattleControllClick : MonoBehaviour
 
     public void BreatheClick()
     {
+        isClick = true;
         player.Breathe();
         BattleManager.instance.CloseAction();
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
@@ -70,7 +76,10 @@ public class BattleControllClick : MonoBehaviour
     }
     public void BtnExit()
     {
-        messageText.text = "";
+        if (!isClick)
+        {
+            messageText.text = "";
+        }
     }
     public void DefenseEnter()
     {

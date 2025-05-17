@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
     public Button attackBtn;
     public Image[] characterImg;
     public Human[] humans;
+    public BattleControllClick controllClick;
 
     public BattleTurn battleTurn;
     private int currentColleaguesIndex = 0;
@@ -77,6 +78,7 @@ public class BattleManager : MonoBehaviour
             case BattleTurn.Colleague:
                 if(colleagues.Length > 0)
                 {
+                    controllClick.Cheering(currentColleaguesIndex);
                     colleagues[currentColleaguesIndex].Action();
                     currentColleaguesIndex = (currentColleaguesIndex + 1) >= colleagues.Length ? 0 : currentColleaguesIndex += 1;
                 }
