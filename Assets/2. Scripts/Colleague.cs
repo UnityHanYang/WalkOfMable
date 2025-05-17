@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Colleague : MonoBehaviour
+public class Colleague : Human
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Action()
     {
+        BattleManager.instance.battleTurn = BattleTurn.Colleague;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Action();
     }
 }
