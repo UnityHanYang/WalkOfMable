@@ -4,6 +4,7 @@ using TMPro;
 public class MainMenuManager : MonoBehaviour
 {
     public TextMeshProUGUI[] buttonTexts;
+    public Animator animator;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnStartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("StartScene");
+        animator.SetTrigger("fadeIn");
     }
 
     public void OnExitGame()
