@@ -41,12 +41,16 @@ public class BattleControllClick : MonoBehaviour
     public void PrayClick()
     {
         player.Pray();
+        actionObj.SetActive(false);
+        MenuObj.SetActive(true);
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
     }
 
     public void BreatheClick()
     {
         player.Breathe();
+        actionObj.SetActive(false);
+        MenuObj.SetActive(true);
         BattleManager.instance.battleTurn = BattleTurn.Colleague;
     }
 
