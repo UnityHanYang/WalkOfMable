@@ -5,36 +5,28 @@ using UnityEngine.UI;
 
 public class Player : Human
 {
-    #region 배고픔
-    public static int hunger { get; private set; }
-    #endregion
+    // 스테이터스 최대치 (정신력은 구역마다 증가)
+    public static int maxHp = 100;
+    public static int maxHunger = 100;
+    public static int maxMentality = 100;
 
-    #region 용기
-    public static int courage { get; private set; }
-    #endregion
-
-    #region 체력
-    public static int hp { get; private set; }
-    #endregion
-
-    #region 정신력
-    public static int mentality { get; private set; }
-    #endregion
+    // 현재 값은 인스턴스 변수로 선언 (외부에서 접근 가능)
+    public int hp { get; set; }
+    public int hunger { get; set; }
+    public int mentality { get; set; }
+    public int courage { get; set; }
 
     public bool isDefend = false;
     public bool isbreathe = false;
 
     private void Awake()
     {
-        hp = 100;
-        hunger = 100;
+        hp = maxHp;
+        hunger = maxHunger;
+        mentality = maxMentality;
         courage = 0;
-        mentality = 60;
     }
-    private void Start()
-    {
-        UpdateFace();
-    }
+
     public override void Action()
     {
         base.Action();
@@ -42,43 +34,25 @@ public class Player : Human
 
     public void DamagedHp(int damage)
     {
-        if (hp - damage >= 0)
-        {
-            hp -= damage;
-        }
+        hp = Mathf.Max(0, hp - damage);
     }
+
     public void DamagedMentality(int damage)
     {
-        if (mentality - damage >= 0)
-        {
-            mentality -= damage;
-        }
+        mentality = Mathf.Max(0, mentality - damage);
     }
 
     public void Attack()
     {
-        if (courage == 100)
+        if (courage >= 100)
         {
-            BattleManager.instance.attackBtn.interactable = true;
             BattleManager.instance.monster.gameObject.SetActive(false);
             BattleManager.instance.monster.Die();
-        }
-        else
-        {
-            BattleManager.instance.attackBtn.interactable = false;
         }
     }
 
     public void Turn()
     {
-        if (courage == 100)
-        {
-            BattleManager.instance.attackBtn.interactable = true;
-        }
-        if(BattleManager.instance.colleagues.Length == 0)
-        {
-            PlusCourage(20);
-        }
     }
 
     public void Defense()
@@ -86,30 +60,14 @@ public class Player : Human
         isDefend = true;
     }
 
-    public void Run(int value)
+    public void Run()
     {
-        if (mentality - value >= 0)
-        {
-            mentality -= value;
-        }
-        UpdateFace();
+        mentality = Mathf.Max(0, mentality - 10);
     }
 
-    public void PlusMentality(int value)
+    public void Pray()
     {
-        if (mentality + value <= 125)
-        {
-            mentality += value;
-        }
-        UpdateFace();
-
-    }
-    public void PlusCourage(int value)
-    {
-        if (courage + value <= 100)
-        {
-            courage += value;
-        }
+        mentality = Mathf.Min(maxMentality, mentality + 10);
     }
 
     public void Breathe()
@@ -117,25 +75,13 @@ public class Player : Human
         isbreathe = true;
     }
 
-    private void UpdateFace()
+    public override void ChangeCondition(int mentality, Image originImg, Image[] changeImg)
     {
-        if (BattleManager.instance != null)
-        {
-            ChangeCondition(mentality, BattleManager.instance.characterImg[0], faceImg);
-        }
-        else if(GameManager.instance != null)
-        {
-            ChangeCondition(mentality, GameManager.instance.characterImg[0], faceImg);
-        }
-    }
-
-    public override void ChangeCondition(int mentality, Image img, Sprite[] changeImg)
-    {
-        base.ChangeCondition(mentality, img, changeImg);
+        base.ChangeCondition(mentality, originImg, changeImg);
     }
 
     private void Update()
     {
-        
+        // 상태 갱신 등 필요 시 사용
     }
 }
