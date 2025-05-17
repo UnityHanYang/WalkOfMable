@@ -64,5 +64,4 @@ public class Monster : MonoBehaviour
         Attack(area, damage, isDefend, isbreathe);
         BattleManager.instance.battleTurn = BattleTurn.Player;
     }
-
 }

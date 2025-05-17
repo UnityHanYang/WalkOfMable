@@ -30,7 +30,6 @@ public class BattleControllClick : MonoBehaviour
         MenuObj.SetActive(false);
         actionObj.SetActive(true);
         player.Action();
-        BattleManager.instance.battleTurn = BattleTurn.Colleague;
     }
     public void RunClick()
     {

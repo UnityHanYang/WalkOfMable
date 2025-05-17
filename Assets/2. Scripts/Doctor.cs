@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Doctor : MonoBehaviour
+public class Doctor : Monster
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        attackDamage = 50;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Attack()
     {
-        
+        BattleManager.instance.player.DamagedMentality(Player.mentality - (Player.mentality/2));
     }
 }

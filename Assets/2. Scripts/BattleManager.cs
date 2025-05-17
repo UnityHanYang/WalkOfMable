@@ -25,7 +25,6 @@ public class BattleManager : MonoBehaviour
         instance = this;
         monster = FindAnyObjectByType<Monster>();
         player = FindAnyObjectByType<Player>();
-
         colleagues = FindObjectsOfType<Colleague>();
     }
 
@@ -58,10 +57,23 @@ public class BattleManager : MonoBehaviour
                 currentColleaguesIndex = (currentColleaguesIndex + 1) >= colleagues.Length ? 0 : currentColleaguesIndex+=1;
                 break;
             case BattleTurn.Monster:
-                monster.Turn(1, player.isDefend, player.isbreathe);
+                CheckBoss();
                 player.isDefend = false;
                 player.isbreathe = false;
                 break;
+        }
+    }
+
+    private void CheckBoss()
+    {
+        if(TryGetComponent<Doctor>(out Doctor doctor))
+        {
+            doctor.Attack();
+        }
+        else
+        {
+            Debug.Log("aa");
+            monster.Turn(1, player.isDefend, player.isbreathe);
         }
     }
 }
